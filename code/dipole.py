@@ -25,6 +25,10 @@ def get_simulation_directory(sim):
     return f'data/latte_metaldiff/{sim}_res7100/'
 
 
+def get_data_directory():
+    return os.path.join(os.path.dirname(__file__), '..', 'data')
+
+
 def get_rockstar_directory(sim):
     sim_dir = get_simulation_directory(sim)
     normal = os.path.exists(os.path.join(sim_dir, 'halo/rockstar_dm'))
@@ -92,8 +96,10 @@ def mask_nondh_streams_stars(stars, sim, mask_groups=None):
 
 
 def mask_danny_streams_stars(stars, sim):
-    streamfile = f'home/data/danny-streams/mergers_{sim}_all.npy'
-    stars_in_streams = np.load(streamfile, allow_pickle=True)
+    data_dir = get_data_directory()
+    filename = f'mergers_{sim}_all.npy'
+    filename = os.path.join(data_dir, 'danny-streams', filename)
+    stars_in_streams = np.load(filename, allow_pickle=True)
     stars_in_streams = np.unique(np.hstack(stars_in_streams))
     mask = np.ones_like(stars['mass'], dtype=bool)
     mask[stars_in_streams] = 0
@@ -110,9 +116,9 @@ def mask_bound_stars(stars, halos):
 
 def assign_particles_to_halo(sim, snapshot, part_type='star',
                              part=None, halos=None, include_main=False):
-    fname = f'{sim}_{snapshot}_bound_{part_type}_indices.npy'
-    filename = os.path.join(os.path.dirname(__file__), '..', 'data',
-                            'particle-assignments', fname)
+    data_dir = get_data_directory()
+    filename = f'{sim}_{snapshot}_bound_{part_type}_indices.npy'
+    filename = os.path.join(data_dir, 'particle-assignments', filename)
 
     # if already computed, simply load
     if os.path.exists(filename):
