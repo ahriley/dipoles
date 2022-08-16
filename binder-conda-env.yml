@@ -1,0 +1,32 @@
+name: binder
+channels:
+- conda-forge
+dependencies:
+- python=3.8
+- numpy
+- matplotlib
+- pandas
+- pip
+- scipy
+- gsl
+- eigen
+- cvxopt
+- healpy
+- h5py=3.6.0
+- astropy
+- seaborn
+- yt
+- galpy
+- deepdish
+- boost-cpp
+- libboost
+- photutils
+- emcee
+- pip:
+  - git+https://github.com/astrorobyn/Agama.git --install-option=--yes
+  - git+https://github.com/adrn/gala --install-option=--yes
+  - git+https://github.com/adrn/superfreq 
+  - git+https://github.com/agurvich/abg_python.git
+  - git+https://github.com/ageller/Firefly.git
+  - git+https://github.com/agurvich/FIRE_studio.git
+  - palettable
