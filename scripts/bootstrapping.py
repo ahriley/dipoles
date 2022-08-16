@@ -2,6 +2,7 @@ import numpy as np
 import pickle
 # import utilities.coordinate as wcoord
 import dipole
+import os
 
 # parameters for the fits
 sim = 'm12f'
@@ -11,7 +12,9 @@ tracer = 'rgb'
 # matrix = 'z0'
 # outfile = f'home/data/{sim}-{snapshot}-{analysis}-bootstrapped-'
 # outfile += f'{tracer}-{matrix}matrix.pickle'
-outfile = f'home/data/{sim}-{snapshot}-{analysis}-bootstrapped-{tracer}.pickle'
+data_dir = dipole.get_data_directory()
+outfile = f'{sim}-{snapshot}-{analysis}-bootstrapped-{tracer}.pickle'
+outfile = os.path.join(data_dir, outfile)
 
 width = 5
 centers = np.arange(30, 301, 10)
