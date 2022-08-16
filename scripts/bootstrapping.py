@@ -1,16 +1,17 @@
 import numpy as np
 import pickle
-import utilities.coordinate as wcoord
+# import utilities.coordinate as wcoord
 import dipole
 
 # parameters for the fits
 sim = 'm12f'
 snapshot = 463
 analysis = 'binned'
-tracer = 'del'
-matrix = 'z0'
-outfile = f'home/data/{sim}-{snapshot}-{analysis}-bootstrapped-'
-outfile += f'{tracer}-{matrix}matrix.pickle'
+tracer = 'rgb'
+# matrix = 'z0'
+# outfile = f'home/data/{sim}-{snapshot}-{analysis}-bootstrapped-'
+# outfile += f'{tracer}-{matrix}matrix.pickle'
+outfile = f'home/data/{sim}-{snapshot}-{analysis}-bootstrapped-{tracer}.pickle'
 
 width = 5
 centers = np.arange(30, 301, 10)
@@ -23,20 +24,23 @@ n_boots = 100
 part, hal = dipole.load_data(sim, snapshot)
 
 # positions and velocities
-if matrix == 'z':
-    # rotation matrix from snapshot
-    xyz_full = part[part_type].prop('host.distance.principal')
-    v_sph_full = part[part_type].prop('host.velocity.principal.spherical')
-elif matrix == 'z0':
-    # rotation matrix from z=0
-    kwargs = {'system_from': 'cartesian', 'system_to': 'spherical'}
-    rotation_matrix = dipole.get_z0_rotation_matrix(sim)
-    xyz = part[part_type].prop('host.distance')
-    xyz_full = wcoord.get_coordinates_rotated(xyz, rotation_matrix)
-    v_xyz = part[part_type].prop('host.velocity')
-    v_xyz = wcoord.get_coordinates_rotated(v_xyz, rotation_matrix)
-    v_sph_full = wcoord.get_velocities_in_coordinate_system(v_xyz, xyz_full,
-                                                            **kwargs)
+xyz_full = part[part_type].prop('host.distance.principal')
+v_sph_full = part[part_type].prop('host.velocity.principal.spherical')
+
+# if matrix == 'z':
+#     # rotation matrix from snapshot
+#     xyz_full = part[part_type].prop('host.distance.principal')
+#     v_sph_full = part[part_type].prop('host.velocity.principal.spherical')
+# elif matrix == 'z0':
+#     # rotation matrix from z=0
+#     kwargs = {'system_from': 'cartesian', 'system_to': 'spherical'}
+#     rotation_matrix = dipole.get_z0_rotation_matrix(sim)
+#     xyz = part[part_type].prop('host.distance')
+#     xyz_full = wcoord.get_coordinates_rotated(xyz, rotation_matrix)
+#     v_xyz = part[part_type].prop('host.velocity')
+#     v_xyz = wcoord.get_coordinates_rotated(v_xyz, rotation_matrix)
+#     v_sph_full = wcoord.get_velocities_in_coordinate_system(v_xyz, xyz_full,
+#                                                             **kwargs)
 
 # need to precompute bound substructure mask b/c based on star indices
 if part_type == 'star':
