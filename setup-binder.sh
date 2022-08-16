@@ -1,3 +1,3 @@
 #!/bin/bash
 
-export PYTHONPATH=$HOME/home/code:$PYTHONPATH
+export PYTHONPATH=$HOME/home/dipoles/code:$PYTHONPATH
