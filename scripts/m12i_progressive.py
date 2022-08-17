@@ -4,8 +4,8 @@ import dipole
 import os
 
 # parameters for fits
-sim = 'm12f'
-snapshot = 463
+sim = 'm12i'
+snapshot = 600
 data_dir = dipole.get_data_directory()
 outfile = f'{sim}-{snapshot}-progressive.pickle'
 outfile = os.path.join(data_dir, outfile)
