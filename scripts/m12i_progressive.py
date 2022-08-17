@@ -80,7 +80,7 @@ for key in keys:
 
         # dipole analysis
         rootstring = f"Fitting {analysis} dipoles for {sim} snapshot "
-        print(rootstring + f" {snapshot} with config {key}")
+        print(rootstring + f"{snapshot} with config {key}")
         initial = [0, 0, 0, 0, 0, 0, np.log10(50), np.log10(50), np.log10(50)]
         solutions = []
         for mask, center in zip(masks, centers):
