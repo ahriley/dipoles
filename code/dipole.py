@@ -106,6 +106,17 @@ def mask_danny_streams_stars(stars, sim):
     return mask
 
 
+def mask_m12i_messy_stream(stars):
+    data_dir = get_data_directory()
+    filename = 'messy_big_stream_m12i.txt'
+    filename = os.path.join(data_dir, 'emily-streams', filename)
+    stars_in_stream = np.loadtxt(filename, dtype=int)
+    stars_in_stream = np.unique(np.hstack(stars_in_stream))
+    mask = np.ones_like(stars['mass'], dtype=bool)
+    mask[stars_in_stream] = 0
+    return mask
+
+
 def mask_bound_stars(stars, halos):
     not_host = np.where(np.sum(halos['host.distance']**2, axis=1) > 0)[0]
     stars_in_halos = np.unique(np.hstack(halos['star.indices'][not_host]))
