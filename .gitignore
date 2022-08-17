@@ -4,6 +4,9 @@ plots/
 notebooks/
 data/
 
+# keeps pylance happy when using deepdish https://github.com/microsoft/pylance-release/issues/3202
+pyrightconfig.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
