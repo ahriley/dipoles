@@ -23,9 +23,9 @@ dependencies:
 - photutils
 - emcee
 - pip:
-  - git+https://github.com/astrorobyn/Agama.git --install-option=--yes
+  - git+https://github.com/GalacticDynamics-Oxford/Agama.git --install-option=--yes
   - git+https://github.com/adrn/gala --install-option=--yes
-  - git+https://github.com/adrn/superfreq 
+  - git+https://github.com/adrn/superfreq
   - git+https://github.com/agurvich/abg_python.git
   - git+https://github.com/ageller/Firefly.git
   - git+https://github.com/agurvich/FIRE_studio.git
