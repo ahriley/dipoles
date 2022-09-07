@@ -83,7 +83,7 @@ for ii in range(n_boots):
     if part_type == 'star':
         mask_bound = mask_bound_full[boot_indices]
         mask_faint = dipole.mask_faint_tracers(dist, tracer=tracer)
-        masks = [mask & mask_bound for mask in masks]
+        masks = [mask & mask_bound & mask_faint for mask in masks]
     elif part_type == 'dark':
         frac = 0.005
         rng = np.random.default_rng()
