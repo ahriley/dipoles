@@ -8,7 +8,7 @@ import os
 sim = 'm12f'
 snapshot = 463
 analysis = 'binned'
-tracer = 'rgb'
+tracer = 'rrl'
 # matrix = 'z0'
 # outfile = f'home/data/{sim}-{snapshot}-{analysis}-bootstrapped-'
 # outfile += f'{tracer}-{matrix}matrix.pickle'
@@ -82,6 +82,7 @@ for ii in range(n_boots):
     # mask bound stars (or random fraction for DM)
     if part_type == 'star':
         mask_bound = mask_bound_full[boot_indices]
+        mask_faint = dipole.mask_faint_tracers(dist, tracer=tracer)
         masks = [mask & mask_bound for mask in masks]
     elif part_type == 'dark':
         frac = 0.005
