@@ -82,8 +82,9 @@ for ii in range(n_boots):
     # mask bound stars (or random fraction for DM)
     if part_type == 'star':
         mask_bound = mask_bound_full[boot_indices]
-        mask_faint = dipole.mask_faint_tracers(dist, tracer=tracer)
-        masks = [mask & mask_bound & mask_faint for mask in masks]
+        masks = [mask & mask_bound for mask in masks]
+        # mask_faint = dipole.mask_faint_tracer s(dist, tracer=tracer)
+        # masks = [mask & mask_bound & mask_faint for mask in masks]
     elif part_type == 'dark':
         frac = 0.005
         rng = np.random.default_rng()
