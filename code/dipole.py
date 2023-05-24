@@ -126,10 +126,13 @@ def mask_bound_stars(stars, halos):
 
 
 def assign_particles_to_halo(sim, snapshot, part_type='star',
-                             part=None, halos=None, include_main=False):
-    data_dir = get_data_directory()
+                             part=None, halos=None, include_main=False,
+                             data_dir=None):
+    if data_dir is None:
+        data_dir = get_data_directory()
+        data_dir = os.path.join(data_dir, 'particle-assignments')
     filename = f'{sim}-{snapshot}-bound-{part_type}-indices.npy'
-    filename = os.path.join(data_dir, 'particle-assignments', filename)
+    filename = os.path.join(data_dir, filename)
 
     # if already computed, simply load
     if os.path.exists(filename):
