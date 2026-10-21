@@ -1,0 +1,27 @@
+image.cmap: plasma
+
+# Fonts
+font.size: 14
+figure.titlesize: x-large
+axes.titlesize: large
+axes.labelsize: large
+xtick.labelsize: medium
+ytick.labelsize: medium
+
+# Axes
+axes.labelcolor: k
+axes.axisbelow: True
+axes.linewidth: 1.5
+
+# Ticks
+xtick.color: 333333
+xtick.direction: in
+ytick.color: 333333
+ytick.direction: in
+xtick.top: True
+ytick.right: True
+
+# Lines
+lines.linewidth: 2
+
+mathtext.fontset: cm
