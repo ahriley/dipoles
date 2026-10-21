@@ -384,7 +384,7 @@ def get_lmc_orbit(sim, tree_index, tree=None, rotation_matrix=None):
                                     rockstar_directory=rockstar_dir)
 
     # get tree indices for main and LMC
-    main_indices = track_halo_indices(tree, tree['tree.index'][0])
+    main_indices = track_halo_indices(tree, 0)
     indices = track_halo_indices(tree, tree_index)
 
     # identify snapshots where both exist
